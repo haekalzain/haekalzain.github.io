@@ -162,57 +162,38 @@ function initRevealAnimation() {
 
 }
 
-/* =========================================
-   Active Navigation
-========================================= */
-
 function initNavbarActive() {
 
     const sections = document.querySelectorAll("main section");
-
     const navLinks = document.querySelectorAll(".nav-menu a");
 
     if (!sections.length || !navLinks.length) return;
 
-    function updateActiveMenu() {
+    const observer = new IntersectionObserver((entries) => {
 
-        let currentSection = "";
+        entries.forEach(entry => {
 
-        const scrollPosition = window.scrollY + 180;
+            if (!entry.isIntersecting) return;
 
-        sections.forEach(section => {
+            const id = entry.target.getAttribute("id");
 
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
+            navLinks.forEach(link => {
+                link.classList.remove("active");
 
-            if (
-                scrollPosition >= sectionTop &&
-                scrollPosition < sectionTop + sectionHeight
-            ) {
-                currentSection = section.id;
-            }
+                if (link.getAttribute("href") === "#" + id) {
+                    link.classList.add("active");
+                }
+            });
 
         });
 
-        navLinks.forEach(link => {
+    }, {
 
-            link.classList.remove("active");
+        threshold: 0.45
 
-            const href = link.getAttribute("href");
+    });
 
-            if (href === "#" + currentSection) {
-
-                link.classList.add("active");
-
-            }
-
-        });
-
-    }
-
-    window.addEventListener("scroll", updateActiveMenu);
-
-    updateActiveMenu();
+    sections.forEach(section => observer.observe(section));
 
 }
 
