@@ -78,7 +78,7 @@ function initCounter() {
 
                     current = target;
 
-                    if (target >= 6) {
+                    if (target > 5) {
                         counter.textContent = target + "+";
                     } else {
                         counter.textContent = target;
@@ -113,22 +113,26 @@ function initCounter() {
 
 function initScrollProgress() {
 
-    const progress = document.querySelector("progress-bar");
+    const progress = document.getElementById("progress-bar");
 
     if (!progress) return;
 
-    window.addEventListener("scroll", () => {
+    function updateProgress() {
 
         const totalHeight =
             document.documentElement.scrollHeight -
             document.documentElement.clientHeight;
 
-        const progressHeight =
+        const progressWidth =
             (window.scrollY / totalHeight) * 100;
 
-        progress.style.width = progressHeight + "%";
+        progress.style.width = progressWidth + "%";
 
-    });
+    }
+
+    window.addEventListener("scroll", updateProgress);
+
+    updateProgress();
 
 }
 
@@ -149,6 +153,7 @@ function initRevealAnimation() {
             if (entry.isIntersecting) {
 
                 entry.target.classList.add("active");
+                observer.unobserve(entry.target);
 
             }
 
@@ -164,36 +169,47 @@ function initRevealAnimation() {
 
 function initNavbarActive() {
 
-    const sections = document.querySelectorAll("main section");
+    const sections = document.querySelectorAll("main section[id]");
     const navLinks = document.querySelectorAll(".nav-menu a");
 
     if (!sections.length || !navLinks.length) return;
 
-    const observer = new IntersectionObserver((entries) => {
+    function updateActiveMenu() {
 
-        entries.forEach(entry => {
+        const scrollPosition = window.scrollY + 180;
 
-            if (!entry.isIntersecting) return;
+        let current = "";
 
-            const id = entry.target.getAttribute("id");
+        sections.forEach(section => {
 
-            navLinks.forEach(link => {
-                link.classList.remove("active");
+            if (
+                scrollPosition >= section.offsetTop &&
+                scrollPosition <
+                section.offsetTop + section.offsetHeight
+            ) {
 
-                if (link.getAttribute("href") === "#" + id) {
-                    link.classList.add("active");
-                }
-            });
+                current = section.id;
+
+            }
 
         });
 
-    }, {
+        navLinks.forEach(link => {
 
-        threshold: 0.45
+            const href = link.getAttribute("href");
 
-    });
+            link.classList.toggle(
+                "active",
+                href === "#" + current
+            );
 
-    sections.forEach(section => observer.observe(section));
+        });
+
+    }
+
+    window.addEventListener("scroll", updateActiveMenu);
+
+    updateActiveMenu();
 
 }
 

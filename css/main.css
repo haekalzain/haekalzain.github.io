@@ -483,6 +483,13 @@ img{
     font-size:15px;
 
     transition:.3s ease;
+    
+    display:inline-block;
+
+    position:relative;
+
+    padding-bottom:8px;
+
 
 }
 
