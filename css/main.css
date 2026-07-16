@@ -1478,6 +1478,21 @@ img{
 
     color:#FFFFFF;
 
+}#typing-text::after{
+    content:"|";
+    animation: blink .8s infinite;
+}
+
+@keyframes blink{
+
+    0%,100%{
+        opacity:1;
+    }
+
+    50%{
+        opacity:0;
+    }
+
 }
 
 /* =======================================================
