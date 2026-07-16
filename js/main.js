@@ -163,27 +163,33 @@ function initRevealAnimation() {
 }
 
 /* =========================================
-   Active Navbar
+   Active Navigation
 ========================================= */
 
 function initNavbarActive() {
 
-    const sections = document.querySelectorAll("section");
+    const sections = document.querySelectorAll("main section");
 
     const navLinks = document.querySelectorAll(".nav-menu a");
 
-    window.addEventListener("scroll", () => {
+    if (!sections.length || !navLinks.length) return;
 
-        let current = "";
+    function updateActiveMenu() {
+
+        let currentSection = "";
+
+        const scrollPosition = window.scrollY + 180;
 
         sections.forEach(section => {
 
-            const top = section.offsetTop - 150;
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
 
-            if (pageYOffset >= top) {
-
-                current = section.getAttribute("id");
-
+            if (
+                scrollPosition >= sectionTop &&
+                scrollPosition < sectionTop + sectionHeight
+            ) {
+                currentSection = section.id;
             }
 
         });
@@ -192,7 +198,9 @@ function initNavbarActive() {
 
             link.classList.remove("active");
 
-            if (link.getAttribute("href") === "#" + current) {
+            const href = link.getAttribute("href");
+
+            if (href === "#" + currentSection) {
 
                 link.classList.add("active");
 
@@ -200,7 +208,11 @@ function initNavbarActive() {
 
         });
 
-    });
+    }
+
+    window.addEventListener("scroll", updateActiveMenu);
+
+    updateActiveMenu();
 
 }
 
