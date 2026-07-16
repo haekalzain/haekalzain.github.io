@@ -52,41 +52,55 @@ function initCounter() {
 
     if (!counters.length) return;
 
-    const observer = new IntersectionObserver(entries => {
+    const observer = new IntersectionObserver((entries) => {
 
-        entries.forEach(entry => {
+        entries.forEach((entry) => {
 
             if (!entry.isIntersecting) return;
 
             const counter = entry.target;
 
-            const target = parseInt(counter.dataset.target);
+            const target = Number(counter.dataset.target);
 
             let current = 0;
 
-            const increment = Math.ceil(target / 100);
+            const duration = 1800;
 
-            const timer = setInterval(() => {
+            const stepTime = 20;
+
+            const increment = target / (duration / stepTime);
+
+            function updateCounter() {
 
                 current += increment;
 
                 if (current >= target) {
 
                     current = target;
-                    clearInterval(timer);
 
+                    if (target >= 6) {
+                        counter.textContent = target + "+";
+                    } else {
+                        counter.textContent = target;
+                    }
+
+                    return;
                 }
 
-                counter.textContent = current;
+                counter.textContent = Math.floor(current);
 
-            }, 20);
+                requestAnimationFrame(updateCounter);
+
+            }
+
+            updateCounter();
 
             observer.unobserve(counter);
 
         });
 
     }, {
-        threshold: 0.5
+        threshold: 0.4
     });
 
     counters.forEach(counter => observer.observe(counter));

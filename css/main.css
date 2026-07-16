@@ -852,6 +852,9 @@ img{
 }
 
 .counter-number{
+    transition: transform .3s ease;
+
+    will-change: contents;
 
     font-size:64px;
 
