@@ -283,14 +283,19 @@ function initTypingEffect() {
 
 function initMobileMenu(){
 
-    const toggle = document.querySelector(".menu-toggle");
+    const button = document.querySelector(".menu-toggle");
     const menu = document.querySelector(".nav-menu");
 
-    if(!toggle || !menu) return;
+    if(!button || !menu) return;
 
-    toggle.addEventListener("click",()=>{
+    button.addEventListener("click",()=>{
 
         menu.classList.toggle("active");
+
+        button.textContent =
+            menu.classList.contains("active")
+            ? "✕"
+            : "☰";
 
     });
 
@@ -299,6 +304,8 @@ function initMobileMenu(){
         link.addEventListener("click",()=>{
 
             menu.classList.remove("active");
+
+            button.textContent="☰";
 
         });
 
