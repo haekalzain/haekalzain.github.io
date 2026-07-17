@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initRevealAnimation();
     initNavbarActive();
     initMobileMenu();
+    initBackToTop
 
 });
 
@@ -307,5 +308,40 @@ function initMobileMenu() {
             button.classList.remove("active");
         }
     });
+
+}
+
+/* =========================================
+   Back To Top
+========================================= */
+
+function initBackToTop() {
+
+    const button = document.getElementById("back-to-top");
+
+    if (!button) return;
+
+    function toggleButton() {
+
+        if (window.scrollY > 500) {
+            button.classList.add("show");
+        } else {
+            button.classList.remove("show");
+        }
+
+    }
+
+    window.addEventListener("scroll", toggleButton);
+
+    button.addEventListener("click", () => {
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    });
+
+    toggleButton();
 
 }
