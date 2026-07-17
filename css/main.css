@@ -1531,6 +1531,70 @@ img{
 
 }
 
+#back-to-top{
+
+    position:fixed;
+
+    right:30px;
+
+    bottom:110px;
+
+    width:55px;
+
+    height:55px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+
+    color:#FFF;
+
+    font-size:24px;
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    box-shadow:0 15px 35px rgba(124,58,237,.35);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transform:translateY(20px);
+
+    transition:all .3s ease;
+
+    z-index:998;
+
+}
+
+#back-to-top.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:translateY(0);
+
+}
+
+#back-to-top:hover{
+
+    transform:translateY(-5px);
+
+}
+
 /* =======================================================
    SELECTION
 ======================================================= */
@@ -1579,82 +1643,6 @@ img{
     opacity:1;
 
     transform:translateY(0);
-
-}
-
-/* =======================================================
-   BACK TO TOP
-======================================================= */
-
-#back-to-top{
-
-    position:fixed;
-
-    right:24px;
-
-    bottom:105px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    padding:12px 18px;
-
-    border-radius:999px;
-
-    background:rgba(11,17,32,.88);
-
-    backdrop-filter:blur(16px);
-
-    border:1px solid rgba(255,255,255,.08);
-
-    color:#FFF;
-
-    cursor:pointer;
-
-    opacity:0;
-
-    visibility:hidden;
-
-    transform:translateY(20px);
-
-    transition:.3s;
-
-    z-index:998;
-
-}
-
-#back-to-top.show{
-
-    opacity:1;
-
-    visibility:visible;
-
-    transform:none;
-
-}
-
-#back-to-top:hover{
-
-    transform:translateY(-5px);
-
-    border-color:var(--primary);
-
-    box-shadow:0 15px 35px rgba(124,58,237,.25);
-
-}
-
-#back-to-top svg{
-
-    transition:.3s;
-
-}
-
-#back-to-top:hover svg{
-
-    transform:translateY(-3px);
 
 }
 
