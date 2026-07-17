@@ -311,19 +311,20 @@ function initMobileMenu() {
 
 }
 
-function initBackToTop(){
+function initBackToTop() {
 
-    const button=document.getElementById("back-to-top");
+    const button = document.getElementById("back-to-top");
+    const about = document.getElementById("about");
 
-    if(!button)return;
+    if (!button || !about) return;
 
-    function toggle(){
+    function toggle() {
 
-        if(window.scrollY>300){
+        if (window.scrollY >= about.offsetTop - 120) {
 
             button.classList.add("show");
 
-        }else{
+        } else {
 
             button.classList.remove("show");
 
@@ -331,15 +332,13 @@ function initBackToTop(){
 
     }
 
-    window.addEventListener("scroll",toggle);
+    window.addEventListener("scroll", toggle);
 
-    button.addEventListener("click",()=>{
+    button.addEventListener("click", () => {
 
         window.scrollTo({
-
             top:0,
             behavior:"smooth"
-
         });
 
     });

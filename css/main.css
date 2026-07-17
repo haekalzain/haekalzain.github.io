@@ -1543,19 +1543,19 @@ img{
 
     bottom:110px;
 
+    width:54px;
+
+    height:54px;
+
     display:flex;
 
     align-items:center;
 
     justify-content:center;
 
-    gap:8px;
+    gap:10px;
 
-    min-width:140px;
-
-    height:50px;
-
-    padding:0 18px;
+    overflow:hidden;
 
     border:none;
 
@@ -1569,21 +1569,17 @@ img{
 
     color:#FFF;
 
-    font-size:14px;
-
-    font-weight:600;
-
     cursor:pointer;
 
     box-shadow:0 15px 35px rgba(124,58,237,.35);
+
+    transition:all .35s ease;
 
     opacity:0;
 
     visibility:hidden;
 
     transform:translateY(20px);
-
-    transition:.3s ease;
 
     z-index:998;
 
@@ -1607,9 +1603,9 @@ img{
 
 #back-to-top svg{
 
-    width:18px;
+    width:22px;
 
-    height:18px;
+    height:22px;
 
     flex-shrink:0;
 
@@ -1617,7 +1613,33 @@ img{
 
 #back-to-top span{
 
+    max-width:0;
+
+    opacity:0;
+
     white-space:nowrap;
+
+    overflow:hidden;
+
+    transition:.35s ease;
+
+}
+
+@media (hover:hover){
+
+    #back-to-top:hover{
+
+        width:170px;
+
+    }
+
+    #back-to-top:hover span{
+
+        max-width:120px;
+
+        opacity:1;
+
+    }
 
 }
 /* =======================================================
@@ -1733,17 +1755,18 @@ img{
         margin:auto;
     }
 
-      /* #back-to-top{
+    #back-to-top{
 
         right:20px;
 
         bottom:100px;
 
-        padding:12px 16px;
+        width:52px;
 
-        font-size:14px;
+        height:52px;
 
-    } */
+    }
+
 
 }
 
