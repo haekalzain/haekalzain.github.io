@@ -323,7 +323,7 @@ function initBackToTop(){
 
     function toggle(){
 
-        if(window.scrollY > 500){
+        if(window.scrollY > 100){
 
             button.classList.add("show");
 
