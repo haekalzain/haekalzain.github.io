@@ -1556,6 +1556,26 @@ img{
 }
 
 /* =========================================
+   Mobile Menu
+========================================= */
+
+.menu-toggle{
+
+    display:none;
+
+    background:none;
+
+    border:none;
+
+    color:#FFFFFF;
+
+    font-size:30px;
+
+    cursor:pointer;
+
+}
+
+/* =========================================
    TABLET
 ========================================= */
 
@@ -1624,102 +1644,60 @@ img{
 
 @media (max-width:768px){
 
-    .section{
-        padding:70px 0;
+    .navbar{
+
+        position:relative;
+
+        padding:20px;
+
     }
 
-    .navbar{
-        flex-direction:column;
-        gap:20px;
-        padding:20px;
+    .menu-toggle{
+
+        display:block;
+
     }
 
     .nav-menu{
-        flex-wrap:wrap;
-        justify-content:center;
-        gap:18px;
+
+        position:absolute;
+
+        top:100%;
+
+        left:0;
+
+        width:100%;
+
+        display:none;
+
+        flex-direction:column;
+
+        gap:24px;
+
+        padding:30px;
+
+        margin-top:18px;
+
+        border-radius:20px;
+
+        background:rgba(11,17,32,.96);
+
+        backdrop-filter:blur(18px);
+
+        border:1px solid rgba(255,255,255,.08);
+
+    }
+
+    .nav-menu.active{
+
+        display:flex;
+
     }
 
     .hero{
-        padding-top:170px;
-    }
 
-    .hero-title{
-        font-size:40px;
-    }
+        padding-top:130px;
 
-    .hero-subtitle{
-        font-size:24px;
-    }
-
-    .hero-description{
-        font-size:16px;
-    }
-
-    .hero-stack{
-        justify-content:center;
-    }
-
-    .hero-stack span{
-        padding:10px 16px;
-        font-size:14px;
-    }
-
-    .hero-buttons{
-        width:100%;
-        flex-direction:column;
-    }
-
-    .btn{
-        width:100%;
-    }
-
-    .profile-card{
-        width:280px;
-    }
-
-    .section-header h2{
-        font-size:32px;
-    }
-
-    .counter-grid,
-    .tech-grid,
-    .philosophy-grid,
-    .impact-grid,
-    .contact-grid{
-        grid-template-columns:1fr;
-    }
-
-    .experience-content,
-    .about-text{
-        padding:30px;
-    }
-
-    .case-title{
-        padding:24px;
-    }
-
-    .case-content{
-        padding:24px;
-    }
-
-    .speaking-content h3{
-        font-size:28px;
-    }
-
-    .floating-whatsapp{
-        width:58px;
-        height:58px;
-        font-size:24px;
-        right:20px;
-        bottom:20px;
-    }
-
-    #back-to-top{
-        right:20px;
-        bottom:95px;
-        padding:12px 18px;
-        font-size:14px;
     }
 
 }
