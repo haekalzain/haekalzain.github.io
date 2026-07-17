@@ -413,6 +413,13 @@ img{
 /* =======================================================
    HEADER
 ======================================================= */
+/* ======================================================
+   NAVBAR
+====================================================== */
+
+/* =======================================================
+   HEADER
+======================================================= */
 
 .header{
 
@@ -424,11 +431,9 @@ img{
 
     width:100%;
 
-    z-index:999;
+    z-index:9999;
 
     padding:20px 0;
-
-    transition:.3s ease;
 
 }
 
@@ -440,27 +445,25 @@ img{
 
     justify-content:space-between;
 
-    padding:18px 30px;
+    padding:18px 28px;
 
-    background:rgba(255,255,255,.05);
+    border-radius:20px;
 
-    backdrop-filter:blur(18px);
+    background:rgba(11,17,32,.82);
+
+    backdrop-filter:blur(20px);
 
     border:1px solid rgba(255,255,255,.08);
-
-    border-radius:18px;
 
 }
 
 .logo{
 
-    font-size:28px;
+    font-size:30px;
 
     font-weight:800;
 
-    letter-spacing:3px;
-
-    color:#FFFFFF;
+    color:#FFF;
 
 }
 
@@ -468,9 +471,15 @@ img{
 
     display:flex;
 
-    gap:35px;
-
     align-items:center;
+
+    gap:34px;
+
+}
+
+.nav-menu li{
+
+    list-style:none;
 
 }
 
@@ -478,24 +487,21 @@ img{
 
     position:relative;
 
-    color:#CBD5E1;
+    color:var(--text);
 
-    font-size:15px;
-
-    transition:.3s ease;
-
-    display:inline-block;
-
-    position:relative;
-
-    padding-bottom:8px;
-
+    transition:.3s;
 
 }
 
 .nav-menu a:hover{
 
-    color:#FFFFFF;
+    color:#FFF;
+
+}
+
+.nav-menu a.active{
+
+    color:var(--primary);
 
 }
 
@@ -513,51 +519,72 @@ img{
 
     height:2px;
 
-    border-radius:99px;
+    background:var(--primary);
 
-    background:linear-gradient(
-
-        90deg,
-
-        var(--primary),
-
-        var(--secondary)
-
-    );
-
-    transition:.3s;
+    transition:.3s ease;
 
 }
 
-.nav-menu a:hover::after{
+.nav-menu a:hover::after,
+.nav-menu a.active::after{
 
     width:100%;
 
 }
 
-.nav-menu a.active{
+/* =======================================================
+   HAMBURGER
+======================================================= */
 
-    color: var(--primary);
+.menu-toggle{
+
+    display:none;
+
+    width:48px;
+
+    height:48px;
+
+    background:none;
+
+    border:none;
+
+    cursor:pointer;
 
 }
 
-.nav-menu a.active::after{
+.menu-toggle span{
 
-    content: "";
+    display:block;
 
-    position: absolute;
+    width:28px;
 
-    left: 0;
+    height:3px;
 
-    bottom: -8px;
+    margin:6px auto;
 
-    width: 100%;
+    background:#FFF;
 
-    height: 2px;
+    border-radius:999px;
 
-    background: var(--primary);
+    transition:.3s ease;
 
-    border-radius: 99px;
+}
+
+.menu-toggle.active span:nth-child(1){
+
+    transform:rotate(45deg) translate(6px,6px);
+
+}
+
+.menu-toggle.active span:nth-child(2){
+
+    opacity:0;
+
+}
+
+.menu-toggle.active span:nth-child(3){
+
+    transform:rotate(-45deg) translate(7px,-7px);
 
 }
 
@@ -1762,6 +1789,102 @@ img{
 
     .section-header h2{
         font-size:28px;
+    }
+
+}
+
+/* =======================================================
+   RESPONSIVE NAVIGATION
+======================================================= */
+
+@media (max-width:1024px){
+
+    .menu-toggle{
+
+        display:block;
+
+    }
+
+    .nav-menu{
+
+        position:fixed;
+
+        top:95px;
+
+        left:20px;
+
+        right:20px;
+
+        flex-direction:column;
+
+        gap:22px;
+
+        padding:30px;
+
+        border-radius:20px;
+
+        background:rgba(11,17,32,.96);
+
+        backdrop-filter:blur(20px);
+
+        border:1px solid rgba(255,255,255,.08);
+
+        opacity:0;
+
+        visibility:hidden;
+
+        pointer-events:none;
+
+        transform:translateY(-15px);
+
+        transition:.3s ease;
+
+    }
+
+    .nav-menu.active{
+
+        opacity:1;
+
+        visibility:visible;
+
+        pointer-events:auto;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@media (min-width:1025px){
+
+    .menu-toggle{
+
+        display:none;
+
+    }
+
+    .nav-menu{
+
+        position:static;
+
+        display:flex;
+
+        flex-direction:row;
+
+        opacity:1;
+
+        visibility:visible;
+
+        pointer-events:auto;
+
+        transform:none;
+
+        background:none;
+
+        border:none;
+
+        padding:0;
+
     }
 
 }

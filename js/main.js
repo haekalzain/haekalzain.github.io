@@ -281,34 +281,31 @@ function initTypingEffect() {
    Mobile Navigation
 ========================================= */
 
-function initMobileMenu(){
+function initMobileMenu() {
 
     const button = document.querySelector(".menu-toggle");
     const menu = document.querySelector(".nav-menu");
 
-    if(!button || !menu) return;
+    if (!button || !menu) return;
 
-    button.addEventListener("click",()=>{
-
+    button.addEventListener("click", () => {
         menu.classList.toggle("active");
-
-        button.textContent =
-            menu.classList.contains("active")
-            ? "✕"
-            : "☰";
-
+        button.classList.toggle("active");
     });
 
-    menu.querySelectorAll("a").forEach(link=>{
-
-        link.addEventListener("click",()=>{
-
+    menu.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
             menu.classList.remove("active");
-
-            button.textContent="☰";
-
+            button.classList.remove("active");
         });
+    });
 
+    // Reset menu saat kembali ke desktop
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > 1024) {
+            menu.classList.remove("active");
+            button.classList.remove("active");
+        }
     });
 
 }
