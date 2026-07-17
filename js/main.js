@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initRevealAnimation();
     initNavbarActive();
     initMobileMenu();
-    initBackToTop
+    initBackToTop();
 
 });
 
