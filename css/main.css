@@ -1531,6 +1531,10 @@ img{
 
 }
 
+/* =======================================================
+   BACK TO TOP
+======================================================= */
+
 #back-to-top{
 
     position:fixed;
@@ -1539,13 +1543,23 @@ img{
 
     bottom:110px;
 
-    width:55px;
+    display:flex;
 
-    height:55px;
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    min-width:140px;
+
+    height:50px;
+
+    padding:0 18px;
 
     border:none;
 
-    border-radius:50%;
+    border-radius:999px;
 
     background:linear-gradient(
         135deg,
@@ -1555,15 +1569,11 @@ img{
 
     color:#FFF;
 
-    font-size:24px;
+    font-size:14px;
+
+    font-weight:600;
 
     cursor:pointer;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
 
     box-shadow:0 15px 35px rgba(124,58,237,.35);
 
@@ -1573,7 +1583,7 @@ img{
 
     transform:translateY(20px);
 
-    transition:all .3s ease;
+    transition:.3s ease;
 
     z-index:998;
 
@@ -1595,6 +1605,21 @@ img{
 
 }
 
+#back-to-top svg{
+
+    width:18px;
+
+    height:18px;
+
+    flex-shrink:0;
+
+}
+
+#back-to-top span{
+
+    white-space:nowrap;
+
+}
 /* =======================================================
    SELECTION
 ======================================================= */

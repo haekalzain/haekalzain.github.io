@@ -311,19 +311,15 @@ function initMobileMenu() {
 
 }
 
-/* =========================================
-   Back To Top
-========================================= */
-
 function initBackToTop(){
 
-    const button = document.getElementById("back-to-top");
+    const button=document.getElementById("back-to-top");
 
-    if(!button) return;
+    if(!button)return;
 
     function toggle(){
 
-        if(window.scrollY > 100){
+        if(window.scrollY>300){
 
             button.classList.add("show");
 
@@ -335,9 +331,9 @@ function initBackToTop(){
 
     }
 
-    window.addEventListener("scroll", toggle);
+    window.addEventListener("scroll",toggle);
 
-    button.addEventListener("click", ()=>{
+    button.addEventListener("click",()=>{
 
         window.scrollTo({
 
